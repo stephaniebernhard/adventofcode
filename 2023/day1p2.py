@@ -1,6 +1,6 @@
 import re
 
-
+# read current working directory from file
 def read_cwd():
     path = ""
     with open('path.txt', "r") as f:
@@ -9,7 +9,8 @@ def read_cwd():
     return path
 
 cwd = read_cwd()
-            
+
+# import text file input as list          
 def import_input():
     my_list = []
     file_path = cwd+"day1.txt"
@@ -20,6 +21,8 @@ def import_input():
 
 cal_doc =import_input()
 
+
+# dictionary definition for translating text numbers into numbers
 translate = {
     "one" : "1",
     "two" : "2",
@@ -32,11 +35,7 @@ translate = {
     "nine" : "9"
 }
 
-#def convert_to_number(string):
-#    for word, initial in translate.items():
-#       string = string.replace(word, initial)
-#    return(string)
-
+# convert a string containing textnumbers into a string containing real numbers including overlapping
 def convert_to_number(string):
     new_string = ""
     for index in range(len(string)):
@@ -50,10 +49,13 @@ def convert_to_number(string):
     return new_string
 
 
+# get first and list number from each line
 def get_cal_val(line):
     cal_vals = [s for s in line if s.isdigit()]
     return int(cal_vals[0]+cal_vals[-1])
 
+
+# sum all the numbers in textfile input
 sum = 0
 
 for line in cal_doc:
