@@ -1,5 +1,3 @@
-import re
-
 # read current working directory from file
 def read_cwd():
     path = ""
@@ -49,20 +47,11 @@ def convert_to_number(string):
     return new_string
 
 
-# get first and list number from each line
-def get_cal_val(line):
-    cal_vals = [s for s in line if s.isdigit()]
-    return int(cal_vals[0]+cal_vals[-1])
-
-
-# sum all the numbers in textfile input
+# sum over two digit numbers (first and last) after conversion
 sum = 0
 
 for line in cal_doc:
     new_line = convert_to_number(line)
-    sum = sum + get_cal_val(new_line)
+    sum = sum + int(new_line[0]+new_line[-1])
 
 print(sum)
-
-
-
