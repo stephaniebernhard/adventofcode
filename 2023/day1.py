@@ -1,3 +1,4 @@
+import re
 
 def read_cwd():
     path = ""
@@ -18,4 +19,14 @@ def import_input():
 
 cal_doc =import_input()
 
-print(cal_doc[0])
+def get_cal_val(line):
+    cal_vals = [s for s in line if s.isdigit()]
+    return int(cal_vals[0]+cal_vals[-1])
+
+
+sum_arr = 0
+
+for line in cal_doc:
+    sum_arr = sum_arr + get_cal_val(line)
+
+print(sum_arr)
