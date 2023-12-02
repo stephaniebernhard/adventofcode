@@ -26,7 +26,6 @@ max = {
 for el in input:
     game = el.split(":")
     game_number = game[0].split(" ")[1]
-    print(game_number)
     possible = True
     rounds = game[1].split(";")
     for round in rounds:
@@ -34,13 +33,8 @@ for el in input:
         for cube_color in cubes:
             color = cube_color.strip().split(" ")[1]
             value = int(cube_color.strip().split(" ")[0])
-            print(color+ ": "+str(value))
             if(value > max[color]):
                 possible = False
-            print(possible)
     if(possible == True):
-        print("Game is possible")
         count = count + int(game_number)
-    else:
-        print("Game is impossible")
 print(count)
