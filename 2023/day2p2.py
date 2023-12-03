@@ -24,9 +24,9 @@ for el in input:
     possible = True
     rounds = game[1].split(";")
     max = {
-    "red": 0,
-    "green": 0,
-    "blue": 0
+        "red": 0,
+        "green": 0,
+        "blue": 0
     }
     for round in rounds:
         cubes = round.split(",")
