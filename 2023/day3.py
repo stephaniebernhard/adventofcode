@@ -12,12 +12,27 @@ def import_input():
     file_path = cwd+"day3.txt"
     with open(file_path,"r") as f:
         for line in f:
-            my_list.append(line.rstrip('\n')) 
+            my_list.append("."+line.rstrip('\n')+".") 
     return my_list
 
 input = import_input()
 line_length = len(input[0])
 number_of_lines = len(input)
+
+def manipulate_input(input):
+    added_string = ""
+    for i in range(line_length):
+        added_string = added_string+"."
+    new_input = [added_string]
+    for line in input:
+        new_input.append(line)
+    new_input.append(added_string)
+    return new_input
+
+
+input = manipulate_input(input)
+print(input)
+
 
 def is_symbol(char):
     symbol = True
@@ -40,15 +55,12 @@ def get_all_numbers(input):
         current_number = ""
         number_array = []
         for pos in range(line_length):
-            read_number=False
             character = line[pos]
             if(character.isdigit()):
-                read_number = True
                 current_number = current_number + character
             else:
                 if(current_number!=""):
                     number_array.append(current_number)
-                read_number = False
                 current_number = ""
             if(pos==line_length-1 and current_number!=""):
                     number_array.append(current_number)
@@ -56,5 +68,35 @@ def get_all_numbers(input):
     return arr
 
 all_numbers = get_all_numbers(input)
-print(all_numbers)
 
+for line_number in range(number_of_lines):
+    line_sum_parts = 0
+    line = input[line_number]
+    numbers = all_numbers[line_number]
+    if(line_number==0):
+        print("line1")
+        for number in all_numbers[0]:
+            is_part_num = False
+            number_length = len(number)
+            pos=line.find(number)
+            #check left diagonal
+            left_diag = input[line_number+1][pos-1]
+            if (is_symbol(left_diag)):
+                is_part_num = True
+            #check middle
+            for i in range(number_length):
+                below = input[line_number+1][pos+i]
+                if(is_symbol(below)):
+                    is_part_num = True
+            #check right diagonal
+            right_diag = input[line_number+1][pos+number_length]
+            if(is_symbol(right_diag)):
+                is_part_num = True
+            if (is_part_num):
+                line_sum_parts = line_sum_parts + int(number)      
+        print("sum of part nums: "+ str(line_sum_parts)) 
+    elif(line_number==(number_of_lines)):
+        print("line"+str(line_number+1))
+    else:
+        print("line"+str(line_number+1))
+    
