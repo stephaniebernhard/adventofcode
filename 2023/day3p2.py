@@ -14,6 +14,7 @@ input = import_input("day3.txt")
 line_length = len(input[0])
 number_of_lines = len(input)
 
+# magic to prevent index out of range
 def manipulate_input(input):
     added_string = ""
     for i in range(line_length):
@@ -24,7 +25,6 @@ def manipulate_input(input):
     new_input.append(added_string)
     return new_input
 
-
 input = manipulate_input(input)
 
 def is_symbol(char):
@@ -32,8 +32,6 @@ def is_symbol(char):
     if(char.isdigit()):
         symbol = False
     elif(char=="."):
-        symbol = False
-    elif(char.isalpha()): #not needed if no letters in input
         symbol = False
     return symbol
 
@@ -58,8 +56,6 @@ def get_all_numbers(input):
     return arr
 
 all_numbers = get_all_numbers(input)
-
-total_sum = 0
 
 number_data = []
 gear_indices = []
@@ -88,19 +84,23 @@ for line_number in range(1,len(input)-1):
 
 total_sum = 0
 
+
+def check_for_partnums(gear, partnum):
+    return gear-1 in range(partnum[1],partnum[2]) or gear in range(partnum[1],partnum[2]) or gear+1 in range(partnum[1],partnum[2])
+
 for line_number in range(len(number_data)):
     gears = gear_indices[line_number]
     # get number of partnums around each gear
     for gear in gears:
         adj_partnums = set()
         for partnum in number_data[line_number-1]:
-            if(gear-1 in range(partnum[1],partnum[2]) or gear in range(partnum[1],partnum[2]) or gear+1 in range(partnum[1],partnum[2])):
+            if(check_for_partnums(gear, partnum)):
                 adj_partnums.add(partnum[0])
         for partnum in number_data[line_number]:
-            if(gear-1 in range(partnum[1],partnum[2]) or gear in range(partnum[1],partnum[2]) or gear+1 in range(partnum[1],partnum[2])):
+            if(check_for_partnums(gear, partnum)):
                 adj_partnums.add(partnum[0])
         for partnum in number_data[line_number+1]:
-            if(gear-1 in range(partnum[1],partnum[2]) or gear in range(partnum[1],partnum[2]) or gear+1 in range(partnum[1],partnum[2])):
+            if(check_for_partnums(gear, partnum)):
                 adj_partnums.add(partnum[0])
         # only count if 2 adjacent partnums
         if(len(adj_partnums)==2):
