@@ -92,12 +92,15 @@ for line_number in range(len(number_data)):
     # get number of partnums around each gear
     for gear in gears:
         adj_partnums = set()
+        # check line above gear
         for partnum in number_data[line_number-1]:
             if(check_for_partnums(gear, partnum)):
                 adj_partnums.add(partnum[0])
+        # check line with gear
         for partnum in number_data[line_number]:
             if(check_for_partnums(gear, partnum)):
                 adj_partnums.add(partnum[0])
+        # check line below gear
         for partnum in number_data[line_number+1]:
             if(check_for_partnums(gear, partnum)):
                 adj_partnums.add(partnum[0])
