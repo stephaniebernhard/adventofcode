@@ -1,21 +1,16 @@
-def read_cwd():
-    path = ""
-    with open('path.txt', "r") as f:
-        for line in f:
-            path = line.rstrip('\n')
-    return path
+from helpers import read_cwd
 
 cwd = read_cwd()
             
-def import_input():
+def import_input(filename):
     my_list = []
-    file_path = cwd+"day3.txt"
+    file_path = cwd+filename
     with open(file_path,"r") as f:
         for line in f:
             my_list.append("."+line.rstrip('\n')+".") 
     return my_list
 
-input = import_input()
+input = import_input("day3.txt")
 line_length = len(input[0])
 number_of_lines = len(input)
 
