@@ -60,6 +60,7 @@ all_numbers = get_all_numbers(input)
 number_data = []
 gear_indices = []
 
+# find all occurences of p in s
 def findall(p, s):
     i = s.find(p)
     while i != -1:
@@ -68,17 +69,15 @@ def findall(p, s):
 
 #get all gear indices and part number start and end indices
 for line_number in range(1,len(input)-1):
-    line_sum_parts = 0
     line = input[line_number]
     numbers = all_numbers[line_number]
     last_pos = 0
     row = []
     for number in all_numbers[line_number]:
         is_part_num = False
-        number_length = len(number)
         pos=line.find(number, last_pos)
         last_pos = pos + len(number)
-        row.append([number, pos, pos+number_length])
+        row.append([number, pos, pos+len(number)])
     number_data.append(row)
     gear_indices.append([i for i in findall('*', input[line_number])])
 
