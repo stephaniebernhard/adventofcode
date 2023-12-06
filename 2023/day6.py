@@ -12,8 +12,6 @@ def import_input(filename):
 
 input = import_input("day6.txt")
 
-print(input)
-
 def get_distance(time, press):
     return (time-press)*press
 
@@ -31,8 +29,8 @@ times = [int(t) for t in input[0].split() if t.isdigit()]
 distances = [int(t) for t in input[1].split() if t.isdigit()]
 
 for i in range(len(times)):
-    number = get_ways(times[i], distances[i])
-    if number > 0:
-        product = product * number
+    ways = get_ways(times[i], distances[i])
+    if ways > 0:
+        product = product * ways
 
 print(product)
