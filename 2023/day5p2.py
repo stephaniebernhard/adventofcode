@@ -25,7 +25,8 @@ def import_input(filename):
     return seeds, input_arr
 
 seeds, input_arr = import_input("day5.txt")
-   
+
+
 def loc_for_seed(start, input_arr):
     thing = start
     for i in range(len(input_arr)):
@@ -38,8 +39,7 @@ def loc_for_seed(start, input_arr):
 
 locs = []
 
-for seed in seeds:
-    locs.append(loc_for_seed(seed,input_arr))
+for i in range(seeds[1]):
+    locs.append(loc_for_seed(seeds[0]+i,input_arr))
 
 print(min(locs))
-
