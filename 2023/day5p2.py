@@ -39,6 +39,7 @@ def loc_for_seed(start, input_arr):
 
 locs = []
 
+# test for first range, already knowing it won't compute in reasonable time
 for i in range(seeds[1]):
     locs.append(loc_for_seed(seeds[0]+i,input_arr))
 
