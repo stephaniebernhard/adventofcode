@@ -44,3 +44,5 @@ for i in range(seeds[1]):
     locs.append(loc_for_seed(seeds[0]+i,input_arr))
 
 print(min(locs))
+
+# takes way too long, need to come up with something less ineffective
