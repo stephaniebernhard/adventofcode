@@ -39,6 +39,7 @@ def get_type(map):
     jokers = 0
     if 'J' in map.keys():
         jokers = map['J']
+        map['J']=0
     if jokers==0:
         # five of a kind
         if(5 in map.values()):
@@ -94,6 +95,7 @@ def get_type(map):
             type = 5
     elif jokers >= 4:
         type = 6
+    map['J']=jokers
     return type
 
 hand_type_map = {}
