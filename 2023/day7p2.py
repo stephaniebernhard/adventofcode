@@ -33,7 +33,7 @@ def get_hand_map(hand):
             map[char] = 1
     return map
 
-
+#wow, that's some ugly magic. at least it works. a lot of braincells have been sacrificed.
 def get_type(map):
     type = 0
     jokers = 0
@@ -74,7 +74,6 @@ def get_type(map):
             for value in map.values():
                 if value==2:
                     count = count + 1
-            # two pairs
             if count >=2:
                 type = 4
             else:

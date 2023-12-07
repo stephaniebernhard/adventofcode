@@ -15,7 +15,6 @@ input = import_input("day7.txt")
 hands = []
 bids = []
 
-
 for el in input:
     hands.append(el.split(" ")[0])
     bids.append(el.split(" ")[1])
@@ -71,7 +70,7 @@ type_arr = [0,1,2,3,4,5,6]
 
 order = ['2','3','4','5','6','7','8','9','T','J','Q','K','A']
 
-# use sort function with key and write compare function
+# compares two hands and sorts them by order logic
 def compare(hand1, hand2):
     winning_hand = ""
     for i in range(5):
@@ -88,6 +87,7 @@ def compare(hand1, hand2):
 
 sorted_hand_list = []
 
+# sort hands within each handtype and add to sorted list
 for type in type_arr:
     hands = [k for k, v in hand_type_map.items() if v==type]
     sorted_hands = sorted(hands, key=cmp_to_key(compare))
