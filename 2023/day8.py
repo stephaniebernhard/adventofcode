@@ -19,8 +19,6 @@ net_map = {}
 for mapping in network:
     net_map[mapping[:3]] = [mapping[7:10], mapping[12:15]]
 
-start = 'AAA'
-end = 'ZZZ'
 current = 'AAA'
 count = 0
 
