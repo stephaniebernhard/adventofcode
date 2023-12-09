@@ -14,10 +14,10 @@ def import_input(filename):
 input = import_input("day9.txt")
 total_sum = 0
 
-def extrapolate(sequence):
+def extrapolate_back(sequence):
     next = 0
     for i in range (len(sequence)-1):
-        next = next + sequence[len(sequence)-2-i][-1]
+        next = sequence[len(sequence)-2-i][0] - next
     return next
 
 for history in input:
@@ -27,6 +27,6 @@ for history in input:
         for i in range(len(diffs[-1])-1):
             new_line.append(diffs[-1][i+1]-diffs[-1][i])
         diffs.append(new_line)
-    total_sum = total_sum + extrapolate(diffs)
+    total_sum = total_sum + extrapolate_back(diffs)
 
 print(total_sum)
