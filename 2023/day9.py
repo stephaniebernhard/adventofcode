@@ -27,9 +27,7 @@ for history in input:
         for i in range(len(diffs[-1])-1):
             new_line.append(diffs[-1][i+1]-diffs[-1][i])
         diffs.append(new_line)
-    print(diffs)
     total_sum = total_sum + extrapolate(diffs)
-    print(total_sum)
 
 print(total_sum)
 
