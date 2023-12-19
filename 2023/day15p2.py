@@ -63,5 +63,3 @@ for box in map.keys():
         total_sum = total_sum + box_num*lens_num*focal_length
 
 print(total_sum)
-
-
