@@ -13,14 +13,9 @@ def import_input():
 
 data = import_input()
 
-def parse_input(data):
-    parsed_data = []
-    for report in data:
-        parsed_report = [int(string_number) for string_number in report]
-        parsed_data.append(parsed_report)
-    return parsed_data
 
-parsed_data = parse_input(data)
+
+
 
 def is_increasing(list):
     return all(i < j for i, j in zip(list, list[1:]))
@@ -41,7 +36,8 @@ def is_safe(list):
 
 safe = 0
 
-for report in parsed_data:
+for element in data:
+    report = [int(number_string) for number_string in element]
     # check if is safe
     if(is_safe(report)):
         safe = safe + 1
