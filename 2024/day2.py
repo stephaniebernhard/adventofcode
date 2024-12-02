@@ -1,12 +1,7 @@
-def read_cwd():
-    path = ""
-    with open('path.txt', "r") as f:
-        for line in f:
-            path = line.rstrip('\n')
-    return path
+from pathlib import Path
 
-cwd = read_cwd()
-            
+cwd = str(Path.cwd()) + "\\inputfiles\\"
+
 def import_input():
     file_path = cwd+"day2.txt"
     data = []
@@ -33,7 +28,7 @@ def is_increasing(list):
 def is_decreasing(list):
     return all(i > j for i, j in zip(list, list[1:]))
 
-# return True if difference between two elements is smaller than 3
+# return True if difference between two elements is smaller or equal 3
 def diff_check(list):
     count = 0
     for i in range(len(list)-1):
