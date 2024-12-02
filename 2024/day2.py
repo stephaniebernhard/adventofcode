@@ -13,10 +13,6 @@ def import_input():
 
 data = import_input()
 
-
-
-
-
 def is_increasing(list):
     return all(i < j for i, j in zip(list, list[1:]))
 
@@ -37,6 +33,7 @@ def is_safe(list):
 safe = 0
 
 for element in data:
+    # cast integer
     report = [int(number_string) for number_string in element]
     # check if is safe
     if(is_safe(report)):
