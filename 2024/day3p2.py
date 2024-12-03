@@ -10,7 +10,7 @@ def import_input(file_path=INPUT_PATH):
 data = import_input()
 one_string_data = "".join(data)
 
-instructions = re.findall(r"mul\([0-9]\,[0-9]\)|do\(\)|don\'t\(\)", one_string_data)
+instructions = re.findall(r"mul\([0-9]{1,3}\,[0-9]{1,3}\)|do\(\)|don\'t\(\)", one_string_data)
 
 def evaluate_mul(instruction):
     x,y = instruction[4:-1].split(",")

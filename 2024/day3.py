@@ -8,21 +8,16 @@ def import_input(file_path=INPUT_PATH):
         return [line.rstrip('\n') for line in f]
     
 data = import_input()
-valid_instructions = []
+
+def evaluate(instruction):
+    x,y = instruction[4:-1].split(",")
+    return int(x) * int(y)
+
+sum = 0 
 
 for line in data:
     instructions = re.findall(r"mul\([0-9]{1,3}\,[0-9]{1,3}\)" ,line)
     for instruction in instructions:
-        valid_instructions.append(instruction)
-
-def evaluate(instruction):
-    params = instruction[4:-1].split(",")
-    result = int(params[0])*int(params[1])
-    return result
-
-sum = 0
-
-for instruction in valid_instructions:
-    sum = sum + evaluate(instruction)
+        sum = sum + evaluate(instruction)
 
 print(sum)
